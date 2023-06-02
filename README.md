@@ -20,7 +20,7 @@ import (
 	"log"
 	"strings"
 
-	xlsx "github.com/jacostaperu/xlsx-stream"
+	 "github.com/jacostaperu/xlsx_stream"
 )
 
 func main() {
@@ -30,7 +30,7 @@ func main() {
 	}
 	defer f.Close()
 
-	r := xlsx.NewReader(f)
+	r := xlsx_stream.NewReader(f)
 	r.Worksheet = "sheet2"
 
 	for {
