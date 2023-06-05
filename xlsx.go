@@ -60,11 +60,18 @@ func (r *Reader) Read() ([]string, error) {
 					rec = append(rec, v.V)
 					continue
 				}
-				i, err := strconv.Atoi(v.V)
-				if err != nil {
-					return nil, err
+				if v.T == "inlinestring" {
+					rec = append(rec, v.V)
+					continue
 				}
-				rec = append(rec, r.sharedStrings[i])
+				if v.T == "s" {
+					i, err := strconv.Atoi(v.V)
+					if err != nil {
+						return nil, err
+					}
+					rec = append(rec, r.sharedStrings[i])
+				}
+
 			}
 			return rec, nil
 		default:
